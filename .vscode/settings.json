@@ -1,0 +1,7 @@
+{
+  "python.defaultInterpreterPath": "/Users/godblessmensahosei/3 BEGINNER AI PROJECTS/project1/.venv/bin/python",
+  "python.linting.enabled": true,
+  "terminal.integrated.inheritEnv": false,
+  "python.condaPath": "",
+  "python.terminal.executeInFileDir": true
+}
