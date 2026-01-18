@@ -10,13 +10,28 @@ from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables from .env file
 
+@tool #glorified function
+def calculator(a: float, b: float) -> str:
+    """
+    Docstring for calculator
+    Useful for performing basic arithmetric calculations with numbers
+    :param a: a number
+    :type a: float
+    :param b: a number
+    :type b: float
+    :return: a statements containing the results of an arithmetric calculation
+    :rtype: str
+    """
+    print("Tool has been called!")
+    return f"The sum of {a} and {b} is {a + b}"
+
 def main():
     #Initialize the ChatOpenAI model with a temperature setting of 0
     # temperature controls the randomness of the model's output.
     # 0 means the model will produce more deterministic and focused responses.
     model = ChatOpenAI(temperature=0) 
 
-    tools = [] # a list to hold the tools the agent can use
+    tools = [calculator] # a list to hold the tools the agent can use
     # Creates a prebuilt ReAct agent executor using the provided model and tools.
     agent_executor = create_react_agent(model, tools) 
 
@@ -42,7 +57,7 @@ def main():
             # print the message response
             if "agent" in chunk and "messages" in chunk["agent"]:
                 for message in chunk["agent"]["messages"]:
-                    print(message.content, end="")
+                    print(message.content, end=" ")
         print()
 
 if __name__ == "__main__":
